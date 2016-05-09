@@ -1,4 +1,8 @@
+#ifndef MY_MACHINE_PARKING_H_
+#define MY_MACHINE_PARKING_H_
+
 #include "Machine.h"
+#include "State.h"
 
 using namespace std;
 
@@ -20,11 +24,13 @@ class ParkingMachine : Machine {
 
     public:
         ParkingMachine();
-        virtual ~ParkingMachine();
+        ~ParkingMachine();
         void on();
         void off();
 
     private:
-        void setCurrent(State *s);
+        void setState(State *s);
         State * current_state;
 };
+
+#endif // MY_MACHINE_PARKING_H_

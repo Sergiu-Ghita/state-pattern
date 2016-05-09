@@ -1,20 +1,19 @@
+#include <iostream>
 #include "ParkingMachine.h"
-
-
-using namespace odcore::base;
+#include "On.h"
 
 ParkingMachine::ParkingMachine() :
-    current_state() {}
+    current_state(new On()) {}
 
 ParkingMachine::~ParkingMachine() {
 }
 
-void ParkingMachine::setCurrent(State *s){
+void ParkingMachine::setState(State *s){
 	current_state = s;
 }
 void ParkingMachine::on(){
-	current_state->on(this);
+	current_state->go_on(this);
 }
 void ParkingMachine::off(){
-	current_state->off(this);
+	current_state->go_off(this);
 }

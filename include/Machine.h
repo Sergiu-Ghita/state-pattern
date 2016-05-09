@@ -1,14 +1,18 @@
-#include "State.h"
+#ifndef MY_MACHINE_H_
+#define MY_MACHINE_H_
 
-using namespace std;
-
+class State;
 class Machine {
     public:
-        virtual ~State();
-        
+        ~Machine();
+
         virtual void on() = 0;
         virtual void off() = 0;
 
-    private: 
-        virtual void setCurrent(State *s) = 0;
+    public: 
+        virtual void setState(State *s) = 0;
 };
+
+#include "State.h"
+
+#endif // MY_MACHINE_H_

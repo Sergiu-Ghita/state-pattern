@@ -1,7 +1,9 @@
-class Off : public State {
+#ifndef MY_STATE_OFF_H_
+#define MY_STATE_OFF_H_
 
-    protected:
-        Off();
+#include "State.h"
+
+class Off : public State {
 
     private:
         /**
@@ -19,9 +21,11 @@ class Off : public State {
         Off& operator=(const Off &);
 
     public:
-        virtual ~Off();
+        Off();
+        ~Off();
 
-        virtual void Off(ParkingMachine * m);
+        void go_off(Machine * m);
 
-        virtual bool off(ParkingMachine * m);
+        void go_on(Machine * m);
 };
+#endif //MY_STATE_OFF_H_
