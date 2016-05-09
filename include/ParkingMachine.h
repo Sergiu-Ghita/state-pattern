@@ -3,8 +3,14 @@
 
 #include "Machine.h"
 #include "State.h"
+#include <automotivedata/GeneratedHeaders_AutomotiveData.h>
 
 using namespace std;
+using namespace odcore::base;
+using namespace odcore::data;
+using namespace automotive;
+using namespace automotive::miniature;
+
 
 class ParkingMachine : Machine {
     private:
@@ -28,9 +34,17 @@ class ParkingMachine : Machine {
         void on();
         void off();
 
-    private:
+        void update(automotive::miniature::SensorBoardData * sbd);
+        void update(automotive::VehicleData * vd);
+
+        double getAbsPath();
+        double getIRFR();
         void setState(State *s);
+        State * getState();
+    private:
         State * current_state;
+        automotive::miniature::SensorBoardData * m_sbd;
+        automotive::VehicleData * m_vd;
 };
 
 #endif // MY_MACHINE_PARKING_H_

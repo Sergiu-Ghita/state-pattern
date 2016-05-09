@@ -11,6 +11,7 @@ class Machine {
 
     public: 
         virtual void setState(State *s) = 0;
+        virtual State * getState() = 0;
 };
 
 #include "State.h"

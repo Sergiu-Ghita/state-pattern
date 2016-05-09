@@ -1,32 +1,33 @@
-#ifndef MY_STATE_OFF_H_
-#define MY_STATE_OFF_H_
+#ifndef MY_STATE_FIND_GAP_H_
+#define MY_STATE_FIND_GAP_H_
 
 #include "State.h"
 
-class Off : public State {
+class FindGap : public State {
 
     private:
         /**
-         * "Forbidden" copy cOffstructor. Goal: The compiler should warn
+         * "Forbidden" copy constructor. Goal: The compiler should warn
          * already at compile time for unwanted bugs caused by any misuse
-         * of the copy cOffstructor.
+         * of the copy constructor.
          */
-        Off(const Off &);
+        FindGap(const FindGap &);
 
         /**
          * "Forbidden" assignment operator. Goal: The compiler should warn
          * already at compile time for unwanted bugs caused by any misuse
          * of the assignment operator.
          */
-        Off& operator=(const Off &);
+        FindGap& operator=(const FindGap &);
 
     public:
-        Off();
-        ~Off();
+        FindGap();
+        ~FindGap();
 
-        void go_off(ParkingMachine * m);
         void go_on(ParkingMachine * m);
 
+        void go_off(ParkingMachine * m);
+        
         int getID();
         std::string getName();
 
@@ -34,4 +35,4 @@ class Off : public State {
         const int m_id ;
         const std::string m_name;
 };
-#endif //MY_STATE_OFF_H_
+#endif //MY_STATE_FIND_GAP_H_

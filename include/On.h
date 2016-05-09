@@ -24,8 +24,15 @@ class On : public State {
         On();
         ~On();
 
-        void go_on(Machine * m);
+        void go_on(ParkingMachine * m);
 
-        void go_off(Machine * m);
+        void go_off(ParkingMachine * m);
+
+        int getID();
+        std::string getName();
+
+    private:
+        const int m_id ;
+        const std::string m_name;
 };
 #endif //MY_STATE_ON_H_

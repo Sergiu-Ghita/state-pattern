@@ -84,9 +84,4 @@ namespace automotive {
     }
 
 }
-
-
-
-
-
 #endif //PARALLELPARKER_PARALLELPARKER_H

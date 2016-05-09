@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ParallelParker.h"
 #include "On.h"
+#include <automotivedata/GeneratedHeaders_AutomotiveData.h>
 
 namespace automotive {
     namespace miniature {
@@ -23,22 +24,29 @@ namespace automotive {
         }
 
         void ParallelParker::tearDown() {
+
         }
 
         odcore::data::dmcp::ModuleExitCodeMessage::ModuleExitCode ParallelParker::body() {
-            int counter = 0;
+            bool driver = true;
             while (getModuleStateAndWaitForRemainingTimeInTimeslice() == odcore::data::dmcp::ModuleStateMessage::RUNNING) {
 
                 // get driver flags and interpret flag for parking:
                 // if flag is to stop m_park_machine->stop()
                 // if flag is to start m_park_machine->start()
 
-                if(counter % 2 == 0){
-                    m_park_machine->on();    
+                if(driver) {
+                    SensorBoardData sbd = getKeyValueDataStore().get(automotive::miniature::SensorBoardData::ID()).getData<SensorBoardData>();
+                    VehicleData vd = getKeyValueDataStore().get(automotive::VehicleData::ID()).getData<VehicleData>();
+                    //VehicleControl vc = getKeyValueDataStore().get(automotive::VehicleControl::ID()).getData<VehicleControl>();
+                    m_park_machine->update(&sbd);
+                    m_park_machine->update(&vd);
+                    m_park_machine->on();
+                    //driver = false;
                 } else {
-                    m_park_machine->off();    
+                    m_park_machine->off();
+                    driver = true;
                 }
-                counter++;
             }
                      
             return odcore::data::dmcp::ModuleExitCodeMessage::OKAY;    
