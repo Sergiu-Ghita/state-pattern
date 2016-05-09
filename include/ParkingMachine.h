@@ -1,8 +1,8 @@
-#include "State.h"
+#include "Machine.h"
 
 using namespace std;
 
-class ParkingMachine {
+class ParkingMachine : Machine {
     private:
         /**
          * "Forbidden" copy constructor. Goal: The compiler should warn
@@ -21,10 +21,10 @@ class ParkingMachine {
     public:
         ParkingMachine();
         virtual ~ParkingMachine();
+        void on();
+        void off();
 
     private:
         void setCurrent(State *s);
-        void on();
-        void off();
         State * current_state;
 };

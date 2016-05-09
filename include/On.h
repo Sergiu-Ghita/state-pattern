@@ -21,7 +21,7 @@ class On : public State {
     public:
         virtual ~On();
 
-        virtual void on(ParkingMachine * m);
+        virtual void on(Machine * m);
 
-        virtual bool off(ParkingMachine * m);
+        virtual bool off(Machine * m);
 };
